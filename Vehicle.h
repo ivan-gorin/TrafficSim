@@ -22,6 +22,7 @@ namespace CityFlow {
 
     class Vehicle {
     private:
+        VehicleInfo vehicleinfo;
         Engine *engine;
     public:
         Vehicle(const VehicleInfo &init, const std::string &id, Engine *engine);
