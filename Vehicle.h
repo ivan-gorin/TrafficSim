@@ -9,8 +9,8 @@ namespace CityFlow
     class Engine;
 
     struct VehicleInfo {
-        int length;
-        int width;
+        double length;
+        double width;
         double speed;
         int type;
         int lane;
