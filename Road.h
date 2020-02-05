@@ -69,7 +69,7 @@ namespace CityFlow {
         std::vector<Point> getOutline();
     };
 
-    class RoadNet {
+    class Network {
     private:
         std::vector<Road> roads;
         std::vector<Intersection> intersections;
