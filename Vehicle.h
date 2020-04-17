@@ -1,8 +1,7 @@
 #include <iostream>
 #include <string>
 
-
-namespace CityFlow {
+namespace traffic_model {
     class Lane;
     class Route;
     class Engine;
@@ -22,6 +21,7 @@ namespace CityFlow {
     class Vehicle {
     private:
         VehicleInfo vehicleinfo;
+        std::string id;
         Engine *engine;
     public:
         Vehicle(const VehicleInfo &init, const std::string &id, Engine *engine);
