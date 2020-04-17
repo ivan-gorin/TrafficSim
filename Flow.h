@@ -1,6 +1,6 @@
 #include "vehicle.h"
 
-namespace CityFlow {
+namespace traffic_model {
     class Engine;
     class Flow {
         private:
@@ -29,4 +29,3 @@ namespace CityFlow {
         }
     };
 }
-
