@@ -2,13 +2,13 @@
 #include <vector>
 
 namespace traffic_model {
-    class Roadnet;
+    class Network;
     class Road;
     class Lane;
     class Vehicle;
 
     class Road {
-        friend class Roadnet;
+        friend class Network;
         friend class Lane;
     private:
         std::string id;
