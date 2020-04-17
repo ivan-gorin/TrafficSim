@@ -1,7 +1,6 @@
-#include "vehicle.h"
+#include "Vehicle.h"
 
 namespace traffic_model {
-    class Engine;
     class Flow {
         private:
             VehicleInfo vehicleTemplate;
@@ -11,7 +10,6 @@ namespace traffic_model {
             int startTime = 0;
             int endTime = -1;
             int cnt = 0;
-            Engine *engine;
             std::string id;
         public:
             Flow(const VehicleInfo &vehicleTemplate, double timeInterval,
