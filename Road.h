@@ -3,7 +3,7 @@
 #include <string>
 #include <map>
 
-namespace CityFlow {
+namespace traffic_model {
     class Vehicle;
     class Lane;
     class Road;
