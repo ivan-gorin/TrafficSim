@@ -170,11 +170,14 @@ namespace traffic_model {
             flow.nextStep(interval);
         planRoute();
         handleWaiting();
-        if (laneChange) {
+        // пока без LaneChange?
+        
+        /*if (laneChange) {
             initSegments();
             planLaneChange();
             updateLeaderAndGap();
-        }
+        }*/ 
+        
         // notifyCross();
 
         getAction();
