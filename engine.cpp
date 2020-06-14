@@ -6,7 +6,7 @@
 #include <memory>
 
 #include <ctime>
-namespace CityFlow {
+namespace traffic_model {
 
     Engine::Engine(const std::string &configFile, int threadNum) : threadNum(threadNum), startBarrier(threadNum + 1),
                                                                    endBarrier(threadNum + 1) {
