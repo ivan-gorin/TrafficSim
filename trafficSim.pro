@@ -57,7 +57,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    cityflow_test.pro.user \
+    trafficSim.pro.user \
     config.json \
     flow.json \
     flowslow.json
