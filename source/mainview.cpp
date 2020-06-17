@@ -5,6 +5,6 @@ mainView::mainView(QWidget* parent)
 {
     QGraphicsScene *scene = new QGraphicsScene(this);
     scene->setItemIndexMethod(QGraphicsScene::NoIndex);
-    scene->setSceneRect(-200, -200, 400, 400);
+    scene->setSceneRect(-5000, -5000, 10000, 10000);
     setScene(scene);
 }

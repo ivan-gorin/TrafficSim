@@ -179,7 +179,7 @@ namespace CityFlow {
         auto cur_pos = this->getCurPos();
 
         GraphicItem->updateLocation(cur_pos.first.x, cur_pos.first.y, cur_pos.second.x, cur_pos.second.y);
-        std::cout << cur_pos.first.x << " " << cur_pos.first.y << " " << cur_pos.second.x << " " << cur_pos.second.y << std::endl;
+//        std::cout << cur_pos.first.x << " " << cur_pos.first.y << " " << cur_pos.second.x << " " << cur_pos.second.y << std::endl;
     }
 
 

@@ -16,7 +16,7 @@ namespace CityFlow {
         endBarrier(threadNum + 1),
         view(inView),
         driver("normal"),
-        weather("rain")
+        weather("sun")
     {
         for (int i = 0; i < threadNum; i++) {
             threadVehiclePool.emplace_back();
