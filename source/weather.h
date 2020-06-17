@@ -5,8 +5,8 @@
 namespace CityFlow {
     struct ChangeVehicleInfo {
         double speedN = 1;
-        double posAcN = 1;
-        double negAcN = 1;
+        double maxPosAcN = 1;
+        double maxNegAcN = 1;
         double maxSpeedN = 1;
         double usualPosAcN = 1;
         double usualNegAcN = 1;
