@@ -2,7 +2,8 @@
 #include <iostream>
 #include <string>
 namespace CityFlow {
-    Driver::Driver(const std::string & type) {
+    Driver::Driver(const std::string & s) {
+           type = s;
            if (type == "crazy") {
                MyInfo.speedN = 0.75;
                MyInfo.posAcN = 0.75;
