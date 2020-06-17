@@ -21,6 +21,17 @@ namespace CityFlow {
           id(vehicle.id), engine(vehicle.engine),
           laneChange(std::make_shared<SimpleLaneChange>(this, *vehicle.laneChange)),
           flow(flow){
+
+//        ChangeVehicleInfo driverInfo = engine->driver.getInfo();
+//        ChangeVehicleInfo weatherInfo = engine->weather.getInfo();
+//        vehicleInfo.maxPosAcc *= driverInfo.maxPosAcN * weatherInfo.maxPosAcN;
+//        vehicleInfo.maxNegAcc *= driverInfo.maxNegAcN * weatherInfo.maxNegAcN;
+//        vehicleInfo.maxSpeed *= driverInfo.maxSpeedN * weatherInfo.maxSpeedN;
+//        vehicleInfo.usualPosAcc *= driverInfo.usualPosAcN * weatherInfo.usualPosAcN;
+//        vehicleInfo.usualNegAcc *= driverInfo.usualNegAcN * weatherInfo.usualNegAcN;
+//        vehicleInfo.turnSpeed *= driverInfo.turnSpeedN * weatherInfo.turnSpeedN;
+//        vehicleInfo.minGap *= driverInfo.minGapN * weatherInfo.minGapN;
+
         enterTime = vehicle.enterTime;
         GraphicItem = new vehicleItem(vehicle.GraphicItem->view);
     }
@@ -30,6 +41,17 @@ namespace CityFlow {
           laneChangeInfo(vehicle.laneChangeInfo), buffer(vehicle.buffer), 
           id(id), engine(engine), laneChange(std::make_shared<SimpleLaneChange>(this)),
           flow(flow){
+
+//        ChangeVehicleInfo driverInfo = engine->driver.getInfo();
+//        ChangeVehicleInfo weatherInfo = engine->weather.getInfo();
+//        vehicleInfo.maxPosAcc *= driverInfo.maxPosAcN * weatherInfo.maxPosAcN;
+//        vehicleInfo.maxNegAcc *= driverInfo.maxNegAcN * weatherInfo.maxNegAcN;
+//        vehicleInfo.maxSpeed *= driverInfo.maxSpeedN * weatherInfo.maxSpeedN;
+//        vehicleInfo.usualPosAcc *= driverInfo.usualPosAcN * weatherInfo.usualPosAcN;
+//        vehicleInfo.usualNegAcc *= driverInfo.usualNegAcN * weatherInfo.usualNegAcN;
+//        vehicleInfo.turnSpeed *= driverInfo.turnSpeedN * weatherInfo.turnSpeedN;
+//        vehicleInfo.minGap *= driverInfo.minGapN * weatherInfo.minGapN;
+
         while (engine->checkPriority(priority = engine->rnd()));
         controllerInfo.router.setVehicle(this);
         enterTime = vehicle.enterTime;
@@ -40,15 +62,17 @@ namespace CityFlow {
         : vehicleInfo(vehicleInfo), controllerInfo(this, vehicleInfo.route, &(engine->rnd)),
           id(id), engine(engine), laneChange(std::make_shared<SimpleLaneChange>(this)),
           flow(flow){
-        ChangeVehicleInfo Changes = engine->changeVehicleInfo;
-        vehicleInfo.speed *= Changes.speedN;
-        vehicleInfo.maxPosAcc *= Changes.maxPosAcN;
-        vehicleInfo.maxNegAcc *= Changes.maxNegAcN;
-        vehicleInfo.maxSpeed *= Changes.maxSpeedN;
-        vehicleInfo.usualPosAcc *= Changes.usualPosAcN;
-        vehicleInfo.usualNegAcc *= Changes.usualNegAcN;
-        vehicleInfo.turnSpeed *= Changes.turnSpeedN;
-        vehicleInfo.minGap *= Changes.minGapN;
+
+        ChangeVehicleInfo driverInfo = engine->driver.getInfo();
+        ChangeVehicleInfo weatherInfo = engine->weather.getInfo();
+        vehicleInfo.maxPosAcc *= driverInfo.maxPosAcN * weatherInfo.maxPosAcN;
+        vehicleInfo.maxNegAcc *= driverInfo.maxNegAcN * weatherInfo.maxNegAcN;
+        vehicleInfo.maxSpeed *= driverInfo.maxSpeedN * weatherInfo.maxSpeedN;
+        vehicleInfo.usualPosAcc *= driverInfo.usualPosAcN * weatherInfo.usualPosAcN;
+        vehicleInfo.usualNegAcc *= driverInfo.usualNegAcN * weatherInfo.usualNegAcN;
+        vehicleInfo.turnSpeed *= driverInfo.turnSpeedN * weatherInfo.turnSpeedN;
+        vehicleInfo.minGap *= driverInfo.minGapN * weatherInfo.minGapN;
+
         controllerInfo.approachingIntersectionDistance =
             vehicleInfo.maxSpeed * vehicleInfo.maxSpeed / vehicleInfo.usualNegAcc / 2 +
             vehicleInfo.maxSpeed * engine->getInterval() * 2;

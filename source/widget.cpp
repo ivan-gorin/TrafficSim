@@ -10,10 +10,7 @@ Widget::Widget(QWidget *parent)
 {
     ui->setupUi(this);
 //    CityFlow::Engine eng("config.json", 1);
-    //create Driver
-    auto d = CityFlow::Driver("normal");
-    CityFlow::ChangeVehicleInfo ans = d.GetAns();
-    eng = new CityFlow::Engine("config.json", 1, ui->graphicsView, ans);
+    eng = new CityFlow::Engine("config.json", 1, ui->graphicsView);
     QTimer* frameTimer = new QTimer(this);
     QTimer* simTimer = new QTimer(this);
     connect(frameTimer, &QTimer::timeout, this, &Widget::animate);

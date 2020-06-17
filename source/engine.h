@@ -6,6 +6,7 @@
 #include "roadnet.h"
 #include "barrier.h"
 #include "mainview.h"
+#include "weather.h"
 
 #include <mutex>
 #include <thread>
@@ -62,7 +63,8 @@ namespace CityFlow {
 
         mainView* view;
 
-        ChangeVehicleInfo  changeVehicleInfo;
+        Driver driver;
+        Weather weather;
 
     private:
         void vehicleControl(Vehicle &vehicle, std::vector<std::pair<Vehicle *, double>> &buffer);
@@ -120,8 +122,8 @@ namespace CityFlow {
     public:
         std::mt19937 rnd;
 
-        //Engine(const std::string &configFile, int threadNum, mainView* inView);
-        Engine(const std::string & configFile, int threadNum, mainView * inView, ChangeVehicleInfo changeVehicleInfo);
+        Engine(const std::string &configFile, int threadNum, mainView* inView);
+//        Engine(const std::string & configFile, int threadNum, mainView * inView);
 
         double getInterval() const { return interval; }
 

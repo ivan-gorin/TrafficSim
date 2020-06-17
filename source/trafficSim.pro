@@ -29,6 +29,7 @@ SOURCES += \
     utility.cpp \
     vehicle.cpp \
     vehicleitem.cpp \
+    weather.cpp \
     widget.cpp
 
 HEADERS += \
@@ -48,6 +49,7 @@ HEADERS += \
     utility.h \
     vehicle.h \
     vehicleitem.h \
+    weather.h \
     widget.h
 
 FORMS += \

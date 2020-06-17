@@ -10,8 +10,14 @@
 #include <ctime>
 namespace CityFlow {
 
-    Engine::Engine(const std::string &configFile, int threadNum, mainView* inView, ChangeVehicleInfo  Changes)  : threadNum(threadNum), startBarrier(threadNum + 1),
-                                                                   endBarrier(threadNum + 1), view(inView), changeVehicleInfo(Changes) {
+    Engine::Engine(const std::string &configFile, int threadNum, mainView* inView):
+        threadNum(threadNum),
+        startBarrier(threadNum + 1),
+        endBarrier(threadNum + 1),
+        view(inView),
+        driver("normal"),
+        weather("rain")
+    {
         for (int i = 0; i < threadNum; i++) {
             threadVehiclePool.emplace_back();
             threadRoadPool.emplace_back();
