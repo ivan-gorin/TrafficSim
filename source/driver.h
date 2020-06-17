@@ -19,6 +19,7 @@ namespace CityFlow {
         std::string type;
     public:
         Driver(const std::string & s);
+        ChangeVehicleInfo GetAns(void);
     };
 
 }
