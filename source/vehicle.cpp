@@ -1,6 +1,5 @@
 #include "vehicle.h"
 #include "engine.h"
-
 #include <iostream>
 #include <limits>
 #include <random>
@@ -37,10 +36,19 @@ namespace CityFlow {
         GraphicItem = new vehicleItem(engine->view);
     }
 
-    Vehicle::Vehicle(const VehicleInfo &vehicleInfo, const std::string &id, Engine *engine, Flow *flow)
+    Vehicle::Vehicle(VehicleInfo &vehicleInfo, const std::string &id, Engine *engine, Flow *flow)
         : vehicleInfo(vehicleInfo), controllerInfo(this, vehicleInfo.route, &(engine->rnd)),
           id(id), engine(engine), laneChange(std::make_shared<SimpleLaneChange>(this)),
           flow(flow){
+        ChangeVehicleInfo Changes = engine->changeVehicleInfo;
+        vehicleInfo.speed *= Changes.speedN;
+        vehicleInfo.maxPosAcc *= Changes.maxPosAcN;
+        vehicleInfo.maxNegAcc *= Changes.maxNegAcN;
+        vehicleInfo.maxSpeed *= Changes.maxSpeedN;
+        vehicleInfo.usualPosAcc *= Changes.usualPosAcN;
+        vehicleInfo.usualNegAcc *= Changes.usualNegAcN;
+        vehicleInfo.turnSpeed *= Changes.turnSpeedN;
+        vehicleInfo.minGap *= Changes.minGapN;
         controllerInfo.approachingIntersectionDistance =
             vehicleInfo.maxSpeed * vehicleInfo.maxSpeed / vehicleInfo.usualNegAcc / 2 +
             vehicleInfo.maxSpeed * engine->getInterval() * 2;

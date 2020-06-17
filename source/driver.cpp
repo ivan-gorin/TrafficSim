@@ -1,3 +1,5 @@
+
+#include <string>
 #include <driver.h>
 #include <iostream>
 #include <string>
@@ -33,4 +35,8 @@ namespace CityFlow {
                MyInfo.usualPosAcN = 0.5;
            }
        }
+    ChangeVehicleInfo Driver:: GetAns(void) {
+        ChangeVehicleInfo res = MyInfo;
+        return res;
+    }
 }

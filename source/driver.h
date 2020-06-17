@@ -1,3 +1,4 @@
+
 #include <vector>
 #include <iostream>
 #include <string>
@@ -19,6 +20,7 @@ namespace CityFlow {
         std::string type;
     public:
         Driver(const std::string & s);
+        ChangeVehicleInfo GetAns(void);
     };
 
 }
