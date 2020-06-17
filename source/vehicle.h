@@ -121,7 +121,7 @@ namespace CityFlow {
 
         Vehicle(const Vehicle &vehicle, const std::string &id, Engine *engine, Flow *flow = nullptr);
 
-        Vehicle(VehicleInfo &init, const std::string &id, Engine *engine, Flow *flow = nullptr);
+        Vehicle(VehicleInfo& init, const std::string &id, Engine *engine, Flow *flow = nullptr);
 
         ~Vehicle();
 

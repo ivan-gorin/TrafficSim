@@ -22,13 +22,13 @@ namespace CityFlow {
             MyInfo.usualNegAcN = 0.75;
             MyInfo.usualPosAcN = 0.75;
         } else if (type == "rain") {
-            MyInfo.maxPosAcN = 0.5;
-            MyInfo.maxNegAcN = 0.5;
-            MyInfo.minGapN = 2;
+            MyInfo.maxPosAcN = 0.2;
+            MyInfo.maxNegAcN = 0.2;
+            MyInfo.minGapN = 3;
             MyInfo.turnSpeedN = 0.5;
-            MyInfo.maxSpeedN = 0.75;
-            MyInfo.usualNegAcN = 0.5;
-            MyInfo.usualPosAcN = 0.5;
+            MyInfo.maxSpeedN = 0.5;
+            MyInfo.usualNegAcN = 0.2;
+            MyInfo.usualPosAcN = 0.2;
         }
     }
 

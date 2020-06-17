@@ -33,7 +33,7 @@ void Widget::animate()
 
 void Widget::simStep()
 {
-    std::cout << stepCount << std::endl;
+//    std::cout << stepCount << std::endl;
     eng->nextStep();
     ++stepCount;
 }

@@ -58,8 +58,8 @@ namespace CityFlow {
         GraphicItem = new vehicleItem(engine->view);
     }
 
-    Vehicle::Vehicle(VehicleInfo &vehicleInfo, const std::string &id, Engine *engine, Flow *flow)
-        : vehicleInfo(vehicleInfo), controllerInfo(this, vehicleInfo.route, &(engine->rnd)),
+    Vehicle::Vehicle(VehicleInfo& newVehicleInfo, const std::string &id, Engine *engine, Flow *flow)
+        : vehicleInfo(newVehicleInfo), controllerInfo(this, vehicleInfo.route, &(engine->rnd)),
           id(id), engine(engine), laneChange(std::make_shared<SimpleLaneChange>(this)),
           flow(flow){
 
