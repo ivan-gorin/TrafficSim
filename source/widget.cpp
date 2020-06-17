@@ -9,13 +9,13 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
-//    CityFlow::Engine eng("config.json", 1);
+//    vehicleItem* test = new vehicleItem(ui->graphicsView);
+//    test->setPos(0, 0);
     eng = new CityFlow::Engine("config.json", 1, ui->graphicsView);
     QTimer* frameTimer = new QTimer(this);
     QTimer* simTimer = new QTimer(this);
     connect(frameTimer, &QTimer::timeout, this, &Widget::animate);
     connect(simTimer, &QTimer::timeout, this, &Widget::simStep);
-//    frameTimer->start(15);
     stepCount = 0;
     simTimer->start(15);
 }
@@ -33,7 +33,7 @@ void Widget::animate()
 
 void Widget::simStep()
 {
-//    std::cout << stepCount << std::endl;
+    std::cout << stepCount << std::endl;
     eng->nextStep();
     ++stepCount;
 }

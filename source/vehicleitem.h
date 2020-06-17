@@ -8,7 +8,8 @@
 
 class vehicleItem : public QGraphicsItem
 {
-//    friend class CityFlow::Vehicle;
+private:
+    bool isDriving;
 public:
     vehicleItem(mainView* viewWidget);
 
