@@ -38,7 +38,7 @@ namespace CityFlow {
     ChangeVehicleInfo Driver:: getInfo() {
         return MyInfo;
     }
-    void Driver::changeType(std::string & type) {
+    void Driver::changeType(std::string & s) {
         type = s;
         if (type == "crazy") {
             MyInfo.speedN = 0.75;
