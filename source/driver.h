@@ -23,6 +23,7 @@ namespace CityFlow {
     public:
         Driver(const std::string & s);
         ChangeVehicleInfo getInfo();
+        void changeType( std::string &s);
     };
 
 }

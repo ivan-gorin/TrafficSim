@@ -39,6 +39,13 @@ namespace CityFlow {
 
     }
 
+    void Engine::ChangeWeather(std::string & type) {
+        weather.changeType(type);
+    }
+    void Engine::ChangeDriver(std::string & type) {
+        driver.changeType(type);
+    }
+
 
     bool Engine::loadConfig(const std::string &configFile) {
         rapidjson::Document document;
