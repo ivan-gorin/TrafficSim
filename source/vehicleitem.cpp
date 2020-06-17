@@ -5,8 +5,10 @@
 #include <QtMath>
 #include <iostream>
 
-vehicleItem::vehicleItem(mainView *viewWidget)
-    : view(viewWidget)
+vehicleItem::vehicleItem(mainView *viewWidget, qreal w, qreal h)
+    : view(viewWidget),
+      width(w),
+      height(h)
 {
     view->scene()->addItem(this);
 }
@@ -20,7 +22,7 @@ void vehicleItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 {
     painter->setPen(Qt::NoPen);
     painter->setBrush(Qt::darkRed);
-    painter->drawRect(-1, -3, 2, 6);
+    painter->drawRect(-width/2, -height/2, width, height);
 }
 
 void vehicleItem::updateLocation(qreal xHead, qreal yHead, qreal xTail, qreal yTail)

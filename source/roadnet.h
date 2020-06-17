@@ -3,6 +3,8 @@
 
 #include "trafficlight.h"
 #include "utility.h"
+#include "vehicleitem.h"
+#include "mainview.h"
 
 #include <list>
 #include <map>
@@ -189,6 +191,7 @@ namespace CityFlow {
         void initLanesPoints();
 
     public:
+
         std::string getId() const { return id; }
 
         const Intersection &getStartIntersection() const { return *(this->startIntersection); }
@@ -237,6 +240,7 @@ namespace CityFlow {
         enum DrivableType {
             LANE = 0, LANELINK = 1
         };
+
 
     protected:
         double length;

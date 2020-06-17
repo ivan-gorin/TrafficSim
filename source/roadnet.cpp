@@ -116,6 +116,7 @@ namespace CityFlow {
                         throw JsonTypeError("point of road", "object");
                     double x = getJsonMember<double>("x", pointValue);
                     double y = getJsonMember<double>("y", pointValue);
+//                    auto debugdot = new vehicleItem(nullptr, 2, 2);
                     roads[i].points.emplace_back(x, y);
                     path.pop_back();
                 }
