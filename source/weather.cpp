@@ -3,7 +3,8 @@
 #include <weather.h>
 
 namespace CityFlow {
-    Weather::Weather(std::string &type) {
+    Weather::Weather(std::string &s) {
+        type = s;
         if (type == "sun") {
             MyInfo.speedN = 0.75;
             MyInfo.posAcN = 0.75;
