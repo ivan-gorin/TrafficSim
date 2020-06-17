@@ -33,3 +33,4 @@
 
 # qt stuff
 *.pro.user
+*.json
