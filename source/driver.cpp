@@ -39,7 +39,7 @@ namespace CityFlow {
         return MyInfo;
     }
     void Driver::changeType(std::string & type) {
-        Driver d{type};
+        type = s;
         if (type == "crazy") {
             MyInfo.speedN = 0.75;
             MyInfo.maxPosAcN = 0.75;
