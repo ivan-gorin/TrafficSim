@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     barrier.cpp \
+    driver.cpp \
     engine.cpp \
     flow.cpp \
     lanechange.cpp \
@@ -33,6 +34,7 @@ SOURCES += \
 HEADERS += \
     barrier.h \
     config.h \
+    driver.h \
     dtoa_milo.h \
     engine.h \
     flow.h \

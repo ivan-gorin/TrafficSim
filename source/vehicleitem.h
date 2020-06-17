@@ -10,7 +10,7 @@ class vehicleItem : public QGraphicsItem
 {
 //    friend class CityFlow::Vehicle;
 public:
-    vehicleItem(mainView* viewWidget, qreal w, qreal h);
+    vehicleItem(mainView* viewWidget);
 
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
@@ -18,8 +18,6 @@ public:
 
 //protected:
     mainView *view;
-private:
-    qreal width, height;
 };
 
 #endif // VEHICLEITEM_H

@@ -1,6 +1,5 @@
 #include "vehicle.h"
 #include "engine.h"
-
 #include <iostream>
 #include <limits>
 #include <random>
@@ -23,7 +22,7 @@ namespace CityFlow {
           laneChange(std::make_shared<SimpleLaneChange>(this, *vehicle.laneChange)),
           flow(flow){
         enterTime = vehicle.enterTime;
-        GraphicItem = new vehicleItem(vehicle.GraphicItem->view, vehicleInfo.width, vehicleInfo.len);
+        GraphicItem = new vehicleItem(vehicle.GraphicItem->view);
     }
 
     Vehicle::Vehicle(const Vehicle &vehicle, const std::string &id, Engine *engine, Flow *flow)
@@ -34,19 +33,28 @@ namespace CityFlow {
         while (engine->checkPriority(priority = engine->rnd()));
         controllerInfo.router.setVehicle(this);
         enterTime = vehicle.enterTime;
-        GraphicItem = new vehicleItem(engine->view, vehicleInfo.width, vehicleInfo.len);
+        GraphicItem = new vehicleItem(engine->view);
     }
 
-    Vehicle::Vehicle(const VehicleInfo &vehicleInfo, const std::string &id, Engine *engine, Flow *flow)
+    Vehicle::Vehicle(VehicleInfo &vehicleInfo, const std::string &id, Engine *engine, Flow *flow)
         : vehicleInfo(vehicleInfo), controllerInfo(this, vehicleInfo.route, &(engine->rnd)),
           id(id), engine(engine), laneChange(std::make_shared<SimpleLaneChange>(this)),
           flow(flow){
+        ChangeVehicleInfo Changes = engine->changeVehicleInfo;
+        vehicleInfo.speed *= Changes.speedN;
+        vehicleInfo.maxPosAcc *= Changes.maxPosAcN;
+        vehicleInfo.maxNegAcc *= Changes.maxNegAcN;
+        vehicleInfo.maxSpeed *= Changes.maxSpeedN;
+        vehicleInfo.usualPosAcc *= Changes.usualPosAcN;
+        vehicleInfo.usualNegAcc *= Changes.usualNegAcN;
+        vehicleInfo.turnSpeed *= Changes.turnSpeedN;
+        vehicleInfo.minGap *= Changes.minGapN;
         controllerInfo.approachingIntersectionDistance =
             vehicleInfo.maxSpeed * vehicleInfo.maxSpeed / vehicleInfo.usualNegAcc / 2 +
             vehicleInfo.maxSpeed * engine->getInterval() * 2;
         while (engine->checkPriority(priority = engine->rnd()));
         enterTime = engine->getCurrentTime();
-        GraphicItem = new vehicleItem(engine->view, vehicleInfo.width, vehicleInfo.len);
+        GraphicItem = new vehicleItem(engine->view);
     }
 
     void Vehicle::setDeltaDistance(double dis) {

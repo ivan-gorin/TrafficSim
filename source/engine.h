@@ -2,6 +2,7 @@
 #define CITYFLOW_ENGINE_H
 
 #include "flow.h"
+#include "driver.h"
 #include "roadnet.h"
 #include "barrier.h"
 #include "mainview.h"
@@ -61,6 +62,8 @@ namespace CityFlow {
 
         mainView* view;
 
+        ChangeVehicleInfo  changeVehicleInfo;
+
     private:
         void vehicleControl(Vehicle &vehicle, std::vector<std::pair<Vehicle *, double>> &buffer);
 
@@ -117,7 +120,8 @@ namespace CityFlow {
     public:
         std::mt19937 rnd;
 
-        Engine(const std::string &configFile, int threadNum, mainView* inView);
+        //Engine(const std::string &configFile, int threadNum, mainView* inView);
+        Engine(const std::string & configFile, int threadNum, mainView * inView, ChangeVehicleInfo changeVehicleInfo);
 
         double getInterval() const { return interval; }
 

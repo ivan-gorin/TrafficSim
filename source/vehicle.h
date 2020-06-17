@@ -6,7 +6,6 @@
 #include "route.h"
 #include "lanechange.h"
 #include "vehicleitem.h"
-
 #include <utility>
 #include <memory>
 
@@ -122,7 +121,7 @@ namespace CityFlow {
 
         Vehicle(const Vehicle &vehicle, const std::string &id, Engine *engine, Flow *flow = nullptr);
 
-        Vehicle(const VehicleInfo &init, const std::string &id, Engine *engine, Flow *flow = nullptr);
+        Vehicle(VehicleInfo &init, const std::string &id, Engine *engine, Flow *flow = nullptr);
 
         ~Vehicle();
 
