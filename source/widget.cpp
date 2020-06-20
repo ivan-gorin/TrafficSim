@@ -33,7 +33,17 @@ void Widget::animate()
 
 void Widget::simStep()
 {
-    std::cout << stepCount << std::endl;
+//    std::cout << stepCount << std::endl;
     eng->nextStep();
     ++stepCount;
+}
+
+void Widget::on_zoomOutButton_clicked()
+{
+    ui->graphicsView->scale(0.5, 0.5);
+}
+
+void Widget::on_zoomInButton_clicked()
+{
+    ui->graphicsView->scale(2, 2);
 }

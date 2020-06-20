@@ -22,6 +22,11 @@ public slots:
     void animate();
     void simStep();
 
+private slots:
+    void on_zoomOutButton_clicked();
+
+    void on_zoomInButton_clicked();
+
 private:
     Ui::Widget *ui;
     CityFlow::Engine* eng;
