@@ -50,18 +50,18 @@
      </item>
      <item>
       <widget class="QDoubleSpinBox" name="chooseIntervalBox">
-       <property name="maximum">
-        <double>2.000000000000000</double>
-       </property>
-       <property name="singleStep">
+       <property name="minimum">
         <double>0.100000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>500.000000000000000</double>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="setIntervalButton">
        <property name="text">
-        <string>Set Interval</string>
+        <string>Set Speed</string>
        </property>
       </widget>
      </item>

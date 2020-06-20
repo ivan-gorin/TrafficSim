@@ -18,7 +18,7 @@ Widget::Widget(QWidget *parent)
     connect(frameTimer, &QTimer::timeout, this, &Widget::animate);
     connect(simTimer, &QTimer::timeout, this, &Widget::simStep);
     stepCount = 0;
-    simTimer->start(15);
+    simTimer->start(16);
 }
 
 Widget::~Widget()
@@ -53,7 +53,8 @@ void Widget::on_zoomInButton_clicked()
 
 void Widget::on_setIntervalButton_clicked()
 {
-    eng->setInterval(ui->chooseIntervalBox->value());
+    double new_int = (ui->chooseIntervalBox->value()) / 62.5;
+    eng->setInterval(new_int);
 }
 
 void Widget::on_pauseButton_clicked()
