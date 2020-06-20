@@ -6,6 +6,7 @@
 #include "route.h"
 #include "lanechange.h"
 #include "vehicleitem.h"
+#include "driver.h"
 #include <utility>
 #include <memory>
 
@@ -112,6 +113,7 @@ namespace CityFlow {
         Flow *flow;
 
         vehicleItem* GraphicItem;
+        Driver driver{"normal"};
 
     public:
 

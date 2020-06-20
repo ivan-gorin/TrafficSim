@@ -5,6 +5,12 @@
 #include <iostream>
 #include <string>
 namespace CityFlow {
+    struct DriverProbability {
+        int normal = 800; // 0 - 800
+        int crazy = 950; // 800 - 950
+        int slow = 1000; //950 - 1000
+    };
+
     struct ChangeVehicleInfo {
         double speedN = 1;
         double maxPosAcN = 1;
