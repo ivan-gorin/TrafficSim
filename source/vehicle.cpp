@@ -56,7 +56,7 @@ namespace CityFlow {
            // probability 0.15 - crazy
             std::string a = "crazy";
             driver.changeType(a);
-        } else if (rand_num > 950) {
+        } else if (rand_num > engine->probs.slow) {
             // probability 0.05 - slow
             std::string a = "slow";
            driver.changeType(a);
