@@ -27,6 +27,8 @@ private slots:
 
     void on_zoomInButton_clicked();
 
+    void on_setIntervalButton_clicked();
+
 private:
     Ui::Widget *ui;
     CityFlow::Engine* eng;

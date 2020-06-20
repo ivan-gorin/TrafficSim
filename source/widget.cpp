@@ -33,7 +33,7 @@ void Widget::animate()
 
 void Widget::simStep()
 {
-//    std::cout << stepCount << std::endl;
+    std::cout << stepCount << std::endl;
     eng->nextStep();
     ++stepCount;
 }
@@ -46,4 +46,9 @@ void Widget::on_zoomOutButton_clicked()
 void Widget::on_zoomInButton_clicked()
 {
     ui->graphicsView->scale(2, 2);
+}
+
+void Widget::on_setIntervalButton_clicked()
+{
+    eng->setInterval(ui->chooseIntervalBox->value());
 }

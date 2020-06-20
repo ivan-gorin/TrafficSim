@@ -772,6 +772,11 @@ namespace CityFlow {
         }
     }
 
+    void Engine::setInterval(double new_int)
+    {
+        interval = new_int;
+    }
+
     Engine::~Engine() {
         logOut.close();
         finished = true;

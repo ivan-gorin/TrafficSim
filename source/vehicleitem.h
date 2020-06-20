@@ -10,6 +10,7 @@ class vehicleItem : public QGraphicsItem
 {
 private:
     bool isDriving;
+    QColor myColor;
 public:
     vehicleItem(mainView* viewWidget);
 

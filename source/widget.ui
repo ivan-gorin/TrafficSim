@@ -27,7 +27,7 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QVBoxLayout" name="buttonLayout">
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
@@ -40,6 +40,23 @@
         </size>
        </property>
       </spacer>
+     </item>
+     <item>
+      <widget class="QDoubleSpinBox" name="chooseIntervalBox">
+       <property name="maximum">
+        <double>2.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="setIntervalButton">
+       <property name="text">
+        <string>Set Interval</string>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="zoomOutButton">

@@ -7,7 +7,7 @@
 #include <iostream>
 
 vehicleItem::vehicleItem(mainView *viewWidget)
-    : view(viewWidget)
+    : myColor(QColor::fromRgb(QRandomGenerator::global()->generate())), view(viewWidget)
 {
     view->scene()->addItem(this);
     isDriving = false;
@@ -22,7 +22,7 @@ void vehicleItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 {
     if (isDriving) {
         painter->setPen(Qt::NoPen);
-        painter->setBrush(QColor::fromRgb(QRandomGenerator::global()->generate()));
+        painter->setBrush(myColor);
         painter->drawRect(-1, -3, 2, 6);
     }
 }

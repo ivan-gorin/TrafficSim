@@ -183,6 +183,7 @@ namespace CityFlow {
         
         void reset(bool resetRnd = false);
 
+        void setInterval(double new_int);
         // archive
 
         bool setRoute(const std::string &vehicle_id, const std::vector<std::string> &anchor_id);
