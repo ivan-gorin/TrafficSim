@@ -42,6 +42,13 @@
       </spacer>
      </item>
      <item>
+      <widget class="QPushButton" name="pauseButton">
+       <property name="text">
+        <string>Pause/Play</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QDoubleSpinBox" name="chooseIntervalBox">
        <property name="maximum">
         <double>2.000000000000000</double>

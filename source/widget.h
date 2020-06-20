@@ -29,9 +29,12 @@ private slots:
 
     void on_setIntervalButton_clicked();
 
+    void on_pauseButton_clicked();
+
 private:
     Ui::Widget *ui;
     CityFlow::Engine* eng;
     long long stepCount;
+    bool doStep;
 };
 #endif // WIDGET_H

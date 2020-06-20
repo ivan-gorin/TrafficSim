@@ -7,6 +7,7 @@
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
+    , doStep(false)
 {
     ui->setupUi(this);
     ui->graphicsView->setDragMode(QGraphicsView::ScrollHandDrag);
@@ -33,9 +34,11 @@ void Widget::animate()
 
 void Widget::simStep()
 {
-    std::cout << stepCount << std::endl;
-    eng->nextStep();
-    ++stepCount;
+//    std::cout << stepCount << std::endl;
+    if (doStep) {
+        eng->nextStep();
+        ++stepCount;
+    }
 }
 
 void Widget::on_zoomOutButton_clicked()
@@ -51,4 +54,9 @@ void Widget::on_zoomInButton_clicked()
 void Widget::on_setIntervalButton_clicked()
 {
     eng->setInterval(ui->chooseIntervalBox->value());
+}
+
+void Widget::on_pauseButton_clicked()
+{
+    doStep = !doStep;
 }
