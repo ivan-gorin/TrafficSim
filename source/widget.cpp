@@ -9,8 +9,8 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
-//    vehicleItem* test = new vehicleItem(ui->graphicsView);
-//    test->setPos(0, 0);
+    ui->graphicsView->setDragMode(QGraphicsView::ScrollHandDrag);
+
     eng = new CityFlow::Engine("config.json", 1, ui->graphicsView);
     QTimer* frameTimer = new QTimer(this);
     QTimer* simTimer = new QTimer(this);
