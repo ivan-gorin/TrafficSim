@@ -19,7 +19,6 @@ public:
     ~Widget();
 
 public slots:
-    void animate();
     void simStep();
 
 private slots:
