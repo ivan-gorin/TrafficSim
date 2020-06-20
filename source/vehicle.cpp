@@ -22,15 +22,6 @@ namespace CityFlow {
           laneChange(std::make_shared<SimpleLaneChange>(this, *vehicle.laneChange)),
           flow(flow){
 
-//        ChangeVehicleInfo driverInfo = engine->driver.getInfo();
-//        ChangeVehicleInfo weatherInfo = engine->weather.getInfo();
-//        vehicleInfo.maxPosAcc *= driverInfo.maxPosAcN * weatherInfo.maxPosAcN;
-//        vehicleInfo.maxNegAcc *= driverInfo.maxNegAcN * weatherInfo.maxNegAcN;
-//        vehicleInfo.maxSpeed *= driverInfo.maxSpeedN * weatherInfo.maxSpeedN;
-//        vehicleInfo.usualPosAcc *= driverInfo.usualPosAcN * weatherInfo.usualPosAcN;
-//        vehicleInfo.usualNegAcc *= driverInfo.usualNegAcN * weatherInfo.usualNegAcN;
-//        vehicleInfo.turnSpeed *= driverInfo.turnSpeedN * weatherInfo.turnSpeedN;
-//        vehicleInfo.minGap *= driverInfo.minGapN * weatherInfo.minGapN;
 
         enterTime = vehicle.enterTime;
         GraphicItem = new vehicleItem(vehicle.GraphicItem->view);
@@ -42,15 +33,7 @@ namespace CityFlow {
           id(id), engine(engine), laneChange(std::make_shared<SimpleLaneChange>(this)),
           flow(flow){
 
-//        ChangeVehicleInfo driverInfo = engine->driver.getInfo();
-//        ChangeVehicleInfo weatherInfo = engine->weather.getInfo();
-//        vehicleInfo.maxPosAcc *= driverInfo.maxPosAcN * weatherInfo.maxPosAcN;
-//        vehicleInfo.maxNegAcc *= driverInfo.maxNegAcN * weatherInfo.maxNegAcN;
-//        vehicleInfo.maxSpeed *= driverInfo.maxSpeedN * weatherInfo.maxSpeedN;
-//        vehicleInfo.usualPosAcc *= driverInfo.usualPosAcN * weatherInfo.usualPosAcN;
-//        vehicleInfo.usualNegAcc *= driverInfo.usualNegAcN * weatherInfo.usualNegAcN;
-//        vehicleInfo.turnSpeed *= driverInfo.turnSpeedN * weatherInfo.turnSpeedN;
-//        vehicleInfo.minGap *= driverInfo.minGapN * weatherInfo.minGapN;
+
 
         while (engine->checkPriority(priority = engine->rnd()));
         controllerInfo.router.setVehicle(this);
@@ -62,6 +45,18 @@ namespace CityFlow {
         : vehicleInfo(newVehicleInfo), controllerInfo(this, vehicleInfo.route, &(engine->rnd)),
           id(id), engine(engine), laneChange(std::make_shared<SimpleLaneChange>(this)),
           flow(flow){
+        std::random_device rd; // obtain a random number from hardware
+        std::mt19937 gen(rd()); // seed the generator
+        std::uniform_int_distribution<> distr(0, 1000);
+        auto rand_num = distr(gen);
+        if (rand_num >= 800 && rand_num <= 950) {
+           // probability 0.15 - crazy
+            std::string a = "crazy";
+            engine->ChangeDriver(a);
+        } else if (rand_num > 950) {
+            std::string a = "slow";
+            engine->ChangeDriver(a);
+        }
 
         ChangeVehicleInfo driverInfo = engine->driver.getInfo();
         ChangeVehicleInfo weatherInfo = engine->weather.getInfo();
