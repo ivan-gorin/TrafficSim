@@ -63,12 +63,11 @@ namespace CityFlow {
 
         mainView* view;
 
-        Driver driver;
         Weather weather;
+        DriverProbability probs;
 
     private:
         void ChangeWeather(std::string & init);
-        void ChangeDriver(std::string & init);
         void vehicleControl(Vehicle &vehicle, std::vector<std::pair<Vehicle *, double>> &buffer);
 
         void planRoute();

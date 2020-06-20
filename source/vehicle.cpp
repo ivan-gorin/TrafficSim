@@ -49,16 +49,20 @@ namespace CityFlow {
         std::mt19937 gen(rd()); // seed the generator
         std::uniform_int_distribution<> distr(0, 1000);
         auto rand_num = distr(gen);
-        if (rand_num >= 800 && rand_num <= 950) {
+        if (rand_num <= engine->probs.normal) {
+            std::string a = "normal";
+            driver.changeType(a);
+        } else if (rand_num <= engine->probs.crazy) {
            // probability 0.15 - crazy
             std::string a = "crazy";
-            engine->ChangeDriver(a);
+            driver.changeType(a);
         } else if (rand_num > 950) {
+            // probability 0.05 - slow
             std::string a = "slow";
-            engine->ChangeDriver(a);
+           driver.changeType(a);
         }
 
-        ChangeVehicleInfo driverInfo = engine->driver.getInfo();
+        ChangeVehicleInfo driverInfo = driver.getInfo();
         ChangeVehicleInfo weatherInfo = engine->weather.getInfo();
         vehicleInfo.maxPosAcc *= driverInfo.maxPosAcN * weatherInfo.maxPosAcN;
         vehicleInfo.maxNegAcc *= driverInfo.maxNegAcN * weatherInfo.maxNegAcN;
