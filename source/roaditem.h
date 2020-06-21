@@ -14,6 +14,7 @@ private:
     QPainterPath* myPath;
 public:
     roadItem(mainView* view, std::vector<CityFlow::Point> points, double width, std::string type, QGraphicsItem* parent=nullptr);
+    ~roadItem();
 };
 
 #endif // ROADITEM_H

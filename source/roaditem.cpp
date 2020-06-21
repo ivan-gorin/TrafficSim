@@ -34,9 +34,7 @@ roadItem::roadItem(mainView *view, std::vector<CityFlow::Point> points, double w
             myPath->lineTo(points[0].x + direction.rx() * width, points[0].y + direction.ry() * width);
             myPath->closeSubpath();
             this->setPath(*myPath);
-            pen.setColor(QColor(255, 255, 255));
-            pen.setWidthF(0.5);
-            this->setPen(pen);
+            this->setPen(Qt::NoPen);
             this->setBrush(QColor(92, 94, 88));
             view->scene()->addItem(this);
 
@@ -67,4 +65,9 @@ roadItem::roadItem(mainView *view, std::vector<CityFlow::Point> points, double w
             this->setBrush(Qt::NoBrush);
         }
     }
+}
+
+roadItem::~roadItem()
+{
+    delete myPath;
 }
