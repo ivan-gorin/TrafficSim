@@ -411,8 +411,15 @@ namespace CityFlow {
 
     void RoadNet::drawRoads(mainView *view)
     {
+        double sumWidth;
         for (size_t i = 0; i < roads.size(); ++i) {
-            roadGraphics.emplace_back(new roadItem(view, roads[i].points, 2 * roads[i].getWidth(), "road"));
+            roadGraphics.emplace_back(new roadItem(view, roads[i].points, roads[i].getWidth(), "road"));
+            new roadItem(view, roads[i].points, 0, "midline", roadGraphics[i]);
+            sumWidth = 0;
+            for (size_t j = 0; j < roads[i].lanes.size() - 1; ++j) {
+                sumWidth += roads[i].lanes[j].width;
+                new roadItem(view, roads[i].points, sumWidth, "dotline", roadGraphics[i]);
+            }
 //            std::cout << "SIZE " << roads[i].lanes.size() << " " << roads[i].getWidth() << std::endl;
         }
     }

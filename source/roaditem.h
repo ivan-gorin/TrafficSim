@@ -10,6 +10,8 @@
 
 class roadItem : public QGraphicsPathItem
 {
+private:
+    QPainterPath* myPath;
 public:
     roadItem(mainView* view, std::vector<CityFlow::Point> points, double width, std::string type, QGraphicsItem* parent=nullptr);
 };

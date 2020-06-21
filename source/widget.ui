@@ -89,6 +89,9 @@
        <verstretch>1</verstretch>
       </sizepolicy>
      </property>
+     <property name="dragMode">
+      <enum>QGraphicsView::ScrollHandDrag</enum>
+     </property>
     </widget>
    </item>
   </layout>
