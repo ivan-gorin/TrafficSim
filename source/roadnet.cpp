@@ -39,6 +39,13 @@ namespace CityFlow {
         return Point((p2.x - p1.x) * a + p1.x, (p2.y - p1.y) * a + p1.y);
     }
 
+    RoadNet::~RoadNet()
+    {
+        for (size_t i = 0; i < intersectionGraphics.size(); ++i) {
+            delete intersectionGraphics[i];
+        }
+    }
+
     bool RoadNet::loadFromJson(std::string jsonFileName) {
         rapidjson::Document document;
         if (!readJsonFromFile(jsonFileName, document)) {
@@ -391,6 +398,23 @@ namespace CityFlow {
         }
         jsonRoot.AddMember("edges", jsonEdges, allocator);
         return jsonRoot;
+    }
+
+    void RoadNet::drawIntersections(mainView *view)
+    {
+        for (size_t i = 0; i < intersections.size(); ++i) {
+            if (!intersections[i].isVirtual) {
+                intersectionGraphics.emplace_back(new roadItem(view, intersections[i].getOutline(), 0, "intersection"));
+            }
+        }
+    }
+
+    void RoadNet::drawRoads(mainView *view)
+    {
+        for (size_t i = 0; i < roads.size(); ++i) {
+            roadGraphics.emplace_back(new roadItem(view, roads[i].points, 2 * roads[i].getWidth(), "road"));
+//            std::cout << "SIZE " << roads[i].lanes.size() << " " << roads[i].getWidth() << std::endl;
+        }
     }
 
     Point Drivable::getPointByDistance(double dis) const {

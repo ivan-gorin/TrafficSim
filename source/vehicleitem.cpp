@@ -11,11 +11,12 @@ vehicleItem::vehicleItem(mainView *viewWidget)
 {
     view->scene()->addItem(this);
     isDriving = false;
+//    std::cout << "veh created" << std::endl;
 }
 
 QRectF vehicleItem::boundingRect() const
 {
-    return QRectF(-5, -5, 10, 10);
+    return QRectF(-1, -3, 2, 6);
 }
 
 void vehicleItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -35,5 +36,5 @@ void vehicleItem::updateLocation(qreal xHead, qreal yHead, qreal xTail, qreal yT
     setPos((xTail + xHead) / 2, (yTail + yHead) / 2);
 //    std::cout << pos().rx() << " " << pos().ry() << std::endl;
     setRotation(qRadiansToDegrees(-qAtan2(xHead - xTail, yHead - yTail)));
+    this->update();
 }
-

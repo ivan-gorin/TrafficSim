@@ -1,8 +1,11 @@
 #include "widget.h"
 #include "ui_widget.h"
+#include "roaditem.h"
 
 #include <QTimer>
 #include <iostream>
+
+#include <vector>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -11,7 +14,6 @@ Widget::Widget(QWidget *parent)
 {
     ui->setupUi(this);
     ui->graphicsView->setDragMode(QGraphicsView::ScrollHandDrag);
-
     eng = new CityFlow::Engine("config.json", 1, ui->graphicsView);
     QTimer* simTimer = new QTimer(this);
     connect(simTimer, &QTimer::timeout, this, &Widget::simStep);
@@ -22,6 +24,7 @@ Widget::Widget(QWidget *parent)
 Widget::~Widget()
 {
     delete ui;
+    delete eng;
 }
 
 void Widget::simStep()

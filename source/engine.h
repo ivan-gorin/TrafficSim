@@ -7,6 +7,7 @@
 #include "barrier.h"
 #include "mainview.h"
 #include "weather.h"
+#include "roaditem.h"
 
 #include <mutex>
 #include <thread>

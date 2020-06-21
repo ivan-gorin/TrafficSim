@@ -3,6 +3,8 @@
 
 #include "trafficlight.h"
 #include "utility.h"
+#include "mainview.h"
+#include "roaditem.h"
 
 #include <list>
 #include <map>
@@ -493,8 +495,12 @@ namespace CityFlow {
         std::vector<LaneLink *> laneLinks;
         std::vector<Drivable *> drivables;
         Point getPoint(const Point &p1, const Point &p2, double a);
+        std::vector<roadItem*> intersectionGraphics;
+        std::vector<roadItem*> roadGraphics;
 
     public:
+        ~RoadNet();
+
         bool loadFromJson(std::string jsonFileName);
 
         rapidjson::Value convertToJson(rapidjson::Document::AllocatorType &allocator);
@@ -530,6 +536,10 @@ namespace CityFlow {
         const std::vector<Drivable *> &getDrivables() const {
             return drivables;
         }
+
+        void drawIntersections(mainView* view);
+
+        void drawRoads(mainView* view);
 
         void reset();
     };

@@ -23,6 +23,7 @@ SOURCES += \
     lanechange.cpp \
     main.cpp \
     mainview.cpp \
+    roaditem.cpp \
     roadnet.cpp \
     router.cpp \
     trafficlight.cpp \
@@ -42,6 +43,7 @@ HEADERS += \
     lanechange.h \
     mainview.h \
     optionparser.h \
+    roaditem.h \
     roadnet.h \
     route.h \
     router.h \

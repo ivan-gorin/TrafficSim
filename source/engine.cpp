@@ -35,6 +35,9 @@ namespace CityFlow {
                                     std::ref(threadIntersectionPool[i]),
                                     std::ref(threadDrivablePool[i]));
         }
+//        std::cout << "hello" << std::endl;
+        roadnet.drawRoads(view);
+        roadnet.drawIntersections(view);
 
     }
 
@@ -886,5 +889,4 @@ namespace CityFlow {
             return vehicle->getInfo();
         }
     }
-
 }

@@ -6,5 +6,6 @@ mainView::mainView(QWidget* parent)
     QGraphicsScene *scene = new QGraphicsScene(this);
     scene->setItemIndexMethod(QGraphicsScene::NoIndex);
     scene->setSceneRect(-50000, -50000, 100000, 100000);
+    setRenderHint(QPainter::Antialiasing);
     setScene(scene);
 }
