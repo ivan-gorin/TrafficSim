@@ -67,6 +67,11 @@
        </item>
        <item>
         <property name="text">
+         <string>snow</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
          <string>rain</string>
         </property>
        </item>

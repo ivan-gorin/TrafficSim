@@ -494,6 +494,26 @@ namespace CityFlow {
         return info;
     }
 
+    void Vehicle::changeWeather(Weather &newWeather)
+    {
+        ChangeVehicleInfo oldWeatherInfo = engine->weather.getInfo();
+        vehicleInfo.maxPosAcc /= oldWeatherInfo.maxPosAcN;
+        vehicleInfo.maxNegAcc /= oldWeatherInfo.maxNegAcN;
+        vehicleInfo.maxSpeed /= oldWeatherInfo.maxSpeedN;
+        vehicleInfo.usualPosAcc /= oldWeatherInfo.usualPosAcN;
+        vehicleInfo.usualNegAcc /= oldWeatherInfo.usualNegAcN;
+        vehicleInfo.turnSpeed /= oldWeatherInfo.turnSpeedN;
+        vehicleInfo.minGap /= oldWeatherInfo.minGapN;
+        ChangeVehicleInfo weatherInfo = newWeather.getInfo();
+        vehicleInfo.maxPosAcc *= weatherInfo.maxPosAcN;
+        vehicleInfo.maxNegAcc *= weatherInfo.maxNegAcN;
+        vehicleInfo.maxSpeed *= weatherInfo.maxSpeedN;
+        vehicleInfo.usualPosAcc *= weatherInfo.usualPosAcN;
+        vehicleInfo.usualNegAcc *= weatherInfo.usualNegAcN;
+        vehicleInfo.turnSpeed *= weatherInfo.turnSpeedN;
+        vehicleInfo.minGap *= weatherInfo.minGapN;
+    }
+
     Vehicle::~Vehicle() {
         delete GraphicItem;
     }

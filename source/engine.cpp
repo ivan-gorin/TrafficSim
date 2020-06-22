@@ -42,6 +42,10 @@ namespace CityFlow {
     }
 
     void Engine::ChangeWeather(const std::string & type) {
+        Weather newWeather(type);
+//        for (auto& i : vehiclePool) {
+//            i.second.first->changeWeather(newWeather);
+//        }
         weather.changeType(type);
     }
 

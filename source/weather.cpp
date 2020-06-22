@@ -41,7 +41,6 @@ namespace CityFlow {
     {
         type = s;
         if (type == "sun") {
-            MyInfo.speedN = 0.75;
             MyInfo.maxPosAcN = 0.75;
             MyInfo.maxNegAcN = 0.75;
             MyInfo.minGapN = 1;
@@ -50,7 +49,6 @@ namespace CityFlow {
             MyInfo.usualNegAcN = 0.75;
             MyInfo.usualPosAcN = 0.75;
         } else if (type == "fog") {
-            MyInfo.speedN = 0.75;
             MyInfo.maxPosAcN = 0.75;
             MyInfo.maxNegAcN = 0.75;
             MyInfo.minGapN = 1;
@@ -59,7 +57,6 @@ namespace CityFlow {
             MyInfo.usualNegAcN = 0.75;
             MyInfo.usualPosAcN = 0.75;
         } else if (type == "rain") {
-            MyInfo.speedN = 0.5;
             MyInfo.maxPosAcN = 0.5;
             MyInfo.maxNegAcN = 0.5;
             MyInfo.minGapN = 2;
@@ -67,6 +64,14 @@ namespace CityFlow {
             MyInfo.maxSpeedN = 0.75;
             MyInfo.usualNegAcN = 0.5;
             MyInfo.usualPosAcN = 0.5;
+        } else if (type == "snow") {
+            MyInfo.maxPosAcN = 0.1;
+            MyInfo.maxNegAcN = 0.1;
+            MyInfo.minGapN = 0.1;
+            MyInfo.turnSpeedN = 0.1;
+            MyInfo.maxSpeedN = 0.1;
+            MyInfo.usualNegAcN = 0.1;
+            MyInfo.usualPosAcN = 0.1;
         }
     }
 

@@ -7,6 +7,8 @@
 #include "lanechange.h"
 #include "vehicleitem.h"
 #include "driver.h"
+#include "weather.h"
+
 #include <utility>
 #include <memory>
 
@@ -370,6 +372,8 @@ namespace CityFlow {
         bool setRoute(const std::vector<Road *> &anchor);
 
         std::map<std::string, std::string> getInfo() const;
+
+        void changeWeather(Weather& newWeather);
 
      };
 
