@@ -6,9 +6,10 @@
 #include <QtMath>
 #include <iostream>
 
-vehicleItem::vehicleItem(mainView *viewWidget)
-    : myColor(QColor::fromRgb(QRandomGenerator::global()->generate())), view(viewWidget)
+vehicleItem::vehicleItem(mainView *viewWidget, std::string id, double w, double l)
+    : myColor(QColor::fromRgb(QRandomGenerator::global()->generate())), view(viewWidget), rect(-(w/2), -(l/2), w, l)
 {
+    myId = id;
     view->scene()->addItem(this);
     isDriving = false;
 //    std::cout << "veh created" << std::endl;
@@ -16,15 +17,17 @@ vehicleItem::vehicleItem(mainView *viewWidget)
 
 QRectF vehicleItem::boundingRect() const
 {
-    return QRectF(-1, -3, 2, 6);
+    return rect;
 }
 
 void vehicleItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     if (isDriving) {
+//        std::cout << myId << " paint" << std::endl;
         painter->setPen(Qt::NoPen);
         painter->setBrush(myColor);
-        painter->drawRect(-1, -3, 2, 6);
+//        QRectF rect(-(width / 2), -(length / 2), width, length);
+        painter->drawRect(rect);
     }
 }
 

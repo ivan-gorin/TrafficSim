@@ -30,7 +30,7 @@ Widget::~Widget()
 
 void Widget::simStep()
 {
-//    std::cout << stepCount << std::endl;
+    std::cout << stepCount << std::endl;
     if (doStep) {
         eng->nextStep();
         ++stepCount;

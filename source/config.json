@@ -3,7 +3,7 @@
 	"seed": 0,
         "dir": "./",
         "roadnetFile": "roadnet.json",
-        "flowFile": "flow.json",
+        "flowFile": "flowslow.json",
         "rlTrafficLight": false,
         "laneChange": true,
         "saveReplay": false,

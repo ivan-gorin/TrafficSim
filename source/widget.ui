@@ -90,7 +90,7 @@
       </sizepolicy>
      </property>
      <property name="dragMode">
-      <enum>QGraphicsView::ScrollHandDrag</enum>
+      <enum>QGraphicsView::NoDrag</enum>
      </property>
     </widget>
    </item>

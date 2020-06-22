@@ -24,7 +24,7 @@ namespace CityFlow {
 
 
         enterTime = vehicle.enterTime;
-        GraphicItem = new vehicleItem(vehicle.GraphicItem->view);
+        GraphicItem = new vehicleItem(vehicle.GraphicItem->view, id, vehicleInfo.width, vehicleInfo.len);
     }
 
     Vehicle::Vehicle(const Vehicle &vehicle, const std::string &id, Engine *engine, Flow *flow)
@@ -38,7 +38,7 @@ namespace CityFlow {
         while (engine->checkPriority(priority = engine->rnd()));
         controllerInfo.router.setVehicle(this);
         enterTime = vehicle.enterTime;
-        GraphicItem = new vehicleItem(engine->view);
+        GraphicItem = new vehicleItem(engine->view, id, vehicleInfo.width, vehicleInfo.len);
     }
 
     Vehicle::Vehicle(VehicleInfo& newVehicleInfo, const std::string &id, Engine *engine, Flow *flow)
@@ -77,7 +77,7 @@ namespace CityFlow {
             vehicleInfo.maxSpeed * engine->getInterval() * 2;
         while (engine->checkPriority(priority = engine->rnd()));
         enterTime = engine->getCurrentTime();
-        GraphicItem = new vehicleItem(engine->view);
+        GraphicItem = new vehicleItem(engine->view, id, vehicleInfo.width, vehicleInfo.len);
     }
 
     void Vehicle::setDeltaDistance(double dis) {
