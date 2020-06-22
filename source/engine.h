@@ -19,7 +19,6 @@
 namespace CityFlow {
 
     class Engine {
-        friend class Archive;
         friend class Vehicle;
     private:
         static bool vehicleCmp(const std::pair<Vehicle *, double> &a, const std::pair<Vehicle *, double> &b) {
