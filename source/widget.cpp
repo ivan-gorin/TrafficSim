@@ -15,7 +15,7 @@ Widget::Widget(QWidget *parent)
     ui->setupUi(this);
     ui->graphicsView->setDragMode(QGraphicsView::ScrollHandDrag);
     eng = new CityFlow::Engine("config.json", 1, ui->graphicsView);
-    QTimer* simTimer = new QTimer(this);
+    simTimer = new QTimer(this);
     connect(simTimer, &QTimer::timeout, this, &Widget::simStep);
     stepCount = 0;
     simTimer->start(16);
@@ -25,6 +25,7 @@ Widget::~Widget()
 {
     delete ui;
     delete eng;
+    delete simTimer;
 }
 
 void Widget::simStep()

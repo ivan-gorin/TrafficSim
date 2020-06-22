@@ -35,5 +35,6 @@ private:
     CityFlow::Engine* eng;
     long long stepCount;
     bool doStep;
+    QTimer* simTimer;
 };
 #endif // WIDGET_H
