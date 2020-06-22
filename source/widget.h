@@ -30,6 +30,8 @@ private slots:
 
     void on_pauseButton_clicked();
 
+    void on_setWeatherButton_clicked();
+
 private:
     Ui::Widget *ui;
     CityFlow::Engine* eng;

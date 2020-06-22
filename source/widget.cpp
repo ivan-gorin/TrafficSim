@@ -15,6 +15,9 @@ Widget::Widget(QWidget *parent)
     ui->setupUi(this);
     ui->graphicsView->setDragMode(QGraphicsView::ScrollHandDrag);
     eng = new CityFlow::Engine("config.json", 1, ui->graphicsView);
+    QString wLabel = "Weather:\n";
+    wLabel.append(eng->getWeather().c_str());
+    ui->weatherLabel->setText(wLabel);
     simTimer = new QTimer(this);
     connect(simTimer, &QTimer::timeout, this, &Widget::simStep);
     stepCount = 0;
@@ -56,4 +59,10 @@ void Widget::on_setIntervalButton_clicked()
 void Widget::on_pauseButton_clicked()
 {
     doStep = !doStep;
+}
+
+void Widget::on_setWeatherButton_clicked()
+{
+    eng->ChangeWeather(ui->chooseWeatherBox->currentText().toStdString());
+    ui->weatherLabel->setText("Weather:\n" + ui->chooseWeatherBox->currentText());
 }

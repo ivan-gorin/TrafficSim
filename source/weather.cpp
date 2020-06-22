@@ -69,5 +69,10 @@ namespace CityFlow {
             MyInfo.usualPosAcN = 0.5;
         }
     }
+
+    const std::string &Weather::getType()
+    {
+        return type;
+    }
     
 };

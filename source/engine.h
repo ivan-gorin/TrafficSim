@@ -67,7 +67,6 @@ namespace CityFlow {
         DriverProbability probs;
 
     private:
-        void ChangeWeather(std::string & init);
         void vehicleControl(Vehicle &vehicle, std::vector<std::pair<Vehicle *, double>> &buffer);
 
         void planRoute();
@@ -183,11 +182,14 @@ namespace CityFlow {
         void reset(bool resetRnd = false);
 
         void setInterval(double new_int);
-        // archive
 
         bool setRoute(const std::string &vehicle_id, const std::vector<std::string> &anchor_id);
 
         std::map<std::string, std::string> getVehicleInfo(const std::string &id) const;
+
+        void ChangeWeather(const std::string & init);
+
+        const std::string& getWeather();
     };
 
 }

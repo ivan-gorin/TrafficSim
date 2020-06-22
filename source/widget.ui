@@ -49,6 +49,42 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="setWeatherButton">
+       <property name="text">
+        <string>Set Weather</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="chooseWeatherBox">
+       <property name="editable">
+        <bool>false</bool>
+       </property>
+       <item>
+        <property name="text">
+         <string>sun</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>rain</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>fog</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="weatherLabel">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QDoubleSpinBox" name="chooseIntervalBox">
        <property name="minimum">
         <double>0.100000000000000</double>

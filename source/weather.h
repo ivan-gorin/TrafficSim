@@ -17,6 +17,7 @@ namespace CityFlow {
         Weather(const std::string &s);
         ChangeVehicleInfo getInfo();
         void changeType(const std::string &s);
+        const std::string& getType();
     };
 
 }

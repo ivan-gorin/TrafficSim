@@ -174,11 +174,8 @@ namespace CityFlow {
             buffer.notifiedVehicles.clear();
             buffer.isNotifiedVehicles = false;
         }
-//        Point new_loc = this->getPoint();
         auto cur_pos = this->getCurPos();
-
         GraphicItem->updateLocation(cur_pos.first.x, cur_pos.first.y, cur_pos.second.x, cur_pos.second.y);
-//        std::cout << cur_pos.first.x << " " << cur_pos.first.y << " " << cur_pos.second.x << " " << cur_pos.second.y << std::endl;
     }
 
 
@@ -416,6 +413,7 @@ namespace CityFlow {
     }
 
     void Vehicle::finishChanging() {
+//        std::cout << "finish lane change" << std::endl;
         laneChange->finishChanging();
         setEnd(true);
     }

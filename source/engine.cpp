@@ -41,8 +41,13 @@ namespace CityFlow {
 
     }
 
-    void Engine::ChangeWeather(std::string & type) {
+    void Engine::ChangeWeather(const std::string & type) {
         weather.changeType(type);
+    }
+
+    const std::string& Engine::getWeather()
+    {
+        return weather.getType();
     }
     /*void Engine::ChangeDriver(std::string & type) {
         driver.changeType(type);
