@@ -27,7 +27,6 @@ namespace CityFlow {
         if (!success) {
             std::cerr << "load config failed!" << std::endl;
         }
-
         for (int i = 0; i < threadNum; i++) {
             threadPool.emplace_back(&Engine::threadController, this,
                                     std::ref(threadVehiclePool[i]),
@@ -52,6 +51,15 @@ namespace CityFlow {
     const std::string& Engine::getWeather()
     {
         return weather.getType();
+    }
+
+    void Engine::printAverage()
+    {
+        auto avg = roadnet.getAverage();
+        for (auto& i : avg) {
+            std::cout << i.first << " " << i.second << std::endl;
+        }
+        std::cout << std::endl;
     }
     /*void Engine::ChangeDriver(std::string & type) {
         driver.changeType(type);

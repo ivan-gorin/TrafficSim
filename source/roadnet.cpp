@@ -71,7 +71,6 @@ namespace CityFlow {
                 path.pop_back();
             }
             assert(path.empty());
-
             for (rapidjson::SizeType i = 0; i < interValues.Size(); i++) {
                 path.emplace_back("intersection[" + std::to_string(i) + "]");
                 std::string id = getJsonMember<const char*>("id", interValues[i]);;
@@ -211,11 +210,13 @@ namespace CityFlow {
                         auto iter = laneLinkValue.FindMember("points");
                         if (iter != laneLinkValue.MemberEnd() && !iter->value.IsArray())
                             throw JsonTypeError("points in laneLink", "array");
-                        if (iter != laneLinkValue.MemberEnd() && !iter->value.Empty())
+                        if (iter != laneLinkValue.MemberEnd() && !iter->value.Empty()) {
                             for (const auto &pValue : iter->value.GetArray()) {
                                 laneLink.points.emplace_back(getJsonMember<double>("x", pValue),
                                                              getJsonMember<double>("y", pValue));
+//                                std::cout << laneLink.points.back().x << " " << laneLink.points.back().y << std::endl;
                             }
+                        }
                         else {
                             Point start = Point(startLane->getPointByDistance(
                                     startLane->getLength() - startLane->getEndIntersection()->width));
@@ -264,7 +265,6 @@ namespace CityFlow {
                     roadLink.intersection = &intersections[i];
                     path.pop_back();
                 }
-
                 //  read trafficLight
                 const auto &trafficLightValue = getJsonMemberObject("trafficLight", curInterValue);
                 path.emplace_back("trafficLight");
@@ -306,7 +306,6 @@ namespace CityFlow {
             std::cerr << " " << e.what() << std::endl;
             return false;
         }
-
         for (auto &intersection : intersections)
             intersection.initCrosses();
         VehicleInfo vehicleTemplate;
@@ -422,6 +421,15 @@ namespace CityFlow {
             }
 //            std::cout << "SIZE " << roads[i].lanes.size() << " " << roads[i].getWidth() << std::endl;
         }
+    }
+
+    std::vector<std::pair<double, double>> RoadNet::getAverage()
+    {
+        std::vector<std::pair<double, double>> res;
+        for (size_t i = 0; i < roads.size(); ++i) {
+            res.emplace_back(roads[i].getAverageSpeed(), roads[i].getAverageDuration());
+        }
+        return res;
     }
 
     Point Drivable::getPointByDistance(double dis) const {

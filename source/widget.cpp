@@ -18,10 +18,13 @@ Widget::Widget(QWidget *parent)
     QString wLabel = "Weather:\n";
     wLabel.append(eng->getWeather().c_str());
     ui->weatherLabel->setText(wLabel);
+    QTimer* avgTimer = new QTimer(this);
     simTimer = new QTimer(this);
     connect(simTimer, &QTimer::timeout, this, &Widget::simStep);
+    connect(avgTimer, &QTimer::timeout, this, &Widget::avgPrint);
     stepCount = 0;
     simTimer->start(16);
+//    avgTimer->start(10000);
 }
 
 Widget::~Widget()
@@ -33,11 +36,16 @@ Widget::~Widget()
 
 void Widget::simStep()
 {
-    std::cout << stepCount << std::endl;
+//    std::cout << stepCount << std::endl;
     if (doStep) {
         eng->nextStep();
         ++stepCount;
     }
+}
+
+void Widget::avgPrint()
+{
+    eng->printAverage();
 }
 
 void Widget::on_zoomOutButton_clicked()

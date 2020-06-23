@@ -20,6 +20,7 @@ public:
 
 public slots:
     void simStep();
+    void avgPrint();
 
 private slots:
     void on_zoomOutButton_clicked();

@@ -541,6 +541,8 @@ namespace CityFlow {
 
         void drawRoads(mainView* view);
 
+        std::vector<std::pair<double, double>> getAverage();
+
         void reset();
     };
 }
