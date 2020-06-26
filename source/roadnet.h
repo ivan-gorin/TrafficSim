@@ -82,6 +82,7 @@ namespace CityFlow {
         std::vector<RoadLink> roadLinks;
         std::vector<Cross> crosses;
         std::vector<LaneLink *> laneLinks;
+        std::vector<Point> shape;
 
         void initCrosses();
 
