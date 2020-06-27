@@ -47,6 +47,9 @@ namespace CityFlow {
 //        }
         weather.changeType(type);
     }
+    void Engine::ChangeWeatherIntensity(double newIntensity) {
+        weather.changeIntensity(newIntensity);
+    }
 
     const std::string& Engine::getWeather()
     {

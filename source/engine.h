@@ -190,6 +190,7 @@ namespace CityFlow {
         void ChangeWeather(const std::string & init);
 
         const std::string& getWeather();
+        void ChangeWeatherIntensity(double newIntensity);
 
         void printAverage();
     };

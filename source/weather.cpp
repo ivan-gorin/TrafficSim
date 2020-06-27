@@ -5,6 +5,7 @@
 namespace CityFlow {
     Weather::Weather(const std::string &s) {
         type = s;
+        intensity = 1;
         if (type == "sun") {
             MyInfo.maxPosAcN = 1;
             MyInfo.maxNegAcN = 1;
@@ -40,6 +41,7 @@ namespace CityFlow {
     void Weather::changeType(const std::string &s)
     {
         type = s;
+        intensity = 1;
         if (type == "sun") {
             MyInfo.maxPosAcN = 0.75;
             MyInfo.maxNegAcN = 0.75;
@@ -78,6 +80,12 @@ namespace CityFlow {
     const std::string &Weather::getType()
     {
         return type;
+    }
+    void Weather::changeIntensity(double newIntensity) {
+        intensity = newIntensity;
+    }
+    double Weather::GetIntensity() {
+        return intensity;
     }
     
 };

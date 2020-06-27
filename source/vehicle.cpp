@@ -45,8 +45,8 @@ namespace CityFlow {
         : vehicleInfo(newVehicleInfo), controllerInfo(this, vehicleInfo.route, &(engine->rnd)),
           id(id), engine(engine), laneChange(std::make_shared<SimpleLaneChange>(this)),
           flow(flow){
-        std::random_device rd; // obtain a random number from hardware
-        std::mt19937 gen(rd()); // seed the generator
+        std::random_device rd;
+        std::mt19937 gen(rd());
         std::uniform_int_distribution<> distr(0, 1000);
         auto rand_num = distr(gen);
         if (rand_num <= engine->probs.normal) {
@@ -64,13 +64,25 @@ namespace CityFlow {
 
         ChangeVehicleInfo driverInfo = driver.getInfo();
         ChangeVehicleInfo weatherInfo = engine->weather.getInfo();
-        vehicleInfo.maxPosAcc *= driverInfo.maxPosAcN * weatherInfo.maxPosAcN;
-        vehicleInfo.maxNegAcc *= driverInfo.maxNegAcN * weatherInfo.maxNegAcN;
-        vehicleInfo.maxSpeed *= driverInfo.maxSpeedN * weatherInfo.maxSpeedN;
-        vehicleInfo.usualPosAcc *= driverInfo.usualPosAcN * weatherInfo.usualPosAcN;
-        vehicleInfo.usualNegAcc *= driverInfo.usualNegAcN * weatherInfo.usualNegAcN;
-        vehicleInfo.turnSpeed *= driverInfo.turnSpeedN * weatherInfo.turnSpeedN;
-        vehicleInfo.minGap *= driverInfo.minGapN * weatherInfo.minGapN;
+        double Intensity = engine->weather.GetIntensity();
+
+        vehicleInfo.maxPosAcc *= driverInfo.maxPosAcN;
+        vehicleInfo.maxNegAcc *= driverInfo.maxNegAcN;
+        vehicleInfo.maxSpeed *= driverInfo.maxSpeedN;
+        vehicleInfo.usualPosAcc *= driverInfo.usualPosAcN;
+        vehicleInfo.usualNegAcc *= driverInfo.usualNegAcN;
+        vehicleInfo.turnSpeed *= driverInfo.turnSpeedN;
+        vehicleInfo.minGap *= driverInfo.minGapN;
+
+        vehicleInfo.maxPosAcc -= ((1 - weatherInfo.maxPosAcN) * Intensity * vehicleInfo.maxPosAcc);
+        vehicleInfo.maxNegAcc -= ((1 - weatherInfo.maxNegAcN) * Intensity * vehicleInfo.maxNegAcc);
+        vehicleInfo.maxSpeed -= ((1 - weatherInfo.maxSpeedN) * Intensity * vehicleInfo.maxSpeed);
+        vehicleInfo.usualPosAcc -= ((1 - weatherInfo.usualPosAcN) * Intensity * vehicleInfo.usualPosAcc);
+        vehicleInfo.usualNegAcc -= ((1 - weatherInfo.usualNegAcN) * Intensity * vehicleInfo.usualNegAcc);
+        vehicleInfo.turnSpeed -= ((1 - weatherInfo.turnSpeedN) * Intensity * vehicleInfo.turnSpeed);
+        // works becuase parameters in [0, 1] but minGap > 1
+        vehicleInfo.minGap += (vehicleInfo.minGap * (weatherInfo.minGapN - 1) * Intensity);
+
 
         controllerInfo.approachingIntersectionDistance =
             vehicleInfo.maxSpeed * vehicleInfo.maxSpeed / vehicleInfo.usualNegAcc / 2 +
