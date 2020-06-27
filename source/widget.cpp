@@ -1,6 +1,7 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include "roaditem.h"
+#include "wheeleventfilter.h"
 
 #include <QTimer>
 #include <iostream>
@@ -14,6 +15,10 @@ Widget::Widget(QWidget *parent)
 {
     ui->setupUi(this);
     ui->graphicsView->setDragMode(QGraphicsView::ScrollHandDrag);
+    ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    wheelEventFilter* filter = new wheelEventFilter;
+    ui->graphicsView->viewport()->installEventFilter(filter);
     eng = new CityFlow::Engine("config.json", 1, ui->graphicsView);
     QString wLabel = "Weather:\n";
     wLabel.append(eng->getWeather().c_str());
@@ -46,6 +51,25 @@ void Widget::simStep()
 void Widget::avgPrint()
 {
     eng->printAverage();
+}
+
+void Widget::wheelEvent(QWheelEvent *event)
+{
+    QPoint pixels = event->pixelDelta();
+    QPoint angle = event->angleDelta() / 8;
+    if (!pixels.isNull()) {
+        if (pixels.ry() > 0) {
+            ui->graphicsView->scale(1.05, 1.05);
+        } else if (pixels.ry() < 0) {
+            ui->graphicsView->scale(0.95238095238095238, 0.95238095238095238);
+        }
+    } else if (!angle.isNull()) {
+        if (angle.ry() > 0) {
+            ui->graphicsView->scale(1.05, 1.05);
+        } else if (angle.ry() < 0) {
+            ui->graphicsView->scale(0.95238095238095238, 0.95238095238095238);
+        }
+    }
 }
 
 void Widget::on_zoomOutButton_clicked()

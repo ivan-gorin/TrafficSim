@@ -31,6 +31,7 @@ SOURCES += \
     vehicle.cpp \
     vehicleitem.cpp \
     weather.cpp \
+    wheeleventfilter.cpp \
     widget.cpp
 
 HEADERS += \
@@ -52,6 +53,7 @@ HEADERS += \
     vehicle.h \
     vehicleitem.h \
     weather.h \
+    wheeleventfilter.h \
     widget.h
 
 FORMS += \

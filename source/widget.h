@@ -5,6 +5,7 @@
 
 #include <QWidget>
 #include <string>
+#include <QWheelEvent>
 
 //QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -21,6 +22,9 @@ public:
 public slots:
     void simStep();
     void avgPrint();
+
+protected:
+    void wheelEvent(QWheelEvent* event) override;
 
 private slots:
     void on_zoomOutButton_clicked();
