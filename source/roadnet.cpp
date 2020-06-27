@@ -173,24 +173,26 @@ namespace CityFlow {
                 }
 
                 // testing new inter input
-                const auto &pointsValue = getJsonMemberArray("shape", curInterValue);
-                for (const auto &pointValue : pointsValue.GetArray()) {
-                    if (!pointValue.IsObject())
-                        throw JsonTypeError("point of road", "object");
-                    double x = getJsonMember<double>("x", pointValue);
-                    double y = getJsonMember<double>("y", pointValue);
-                    intersections[i].shape.emplace_back(x, y);
-                }
+                const auto &pointsIter = curInterValue.FindMember("shape");
+                if (pointsIter != curInterValue.MemberEnd() && !pointsIter->value.Empty()) {
+                    for (const auto &pointValue : pointsIter->value.GetArray()) {
+                        if (!pointValue.IsObject())
+                            throw JsonTypeError("point of road", "object");
+                        double x = getJsonMember<double>("x", pointValue);
+                        double y = getJsonMember<double>("y", pointValue);
+                        intersections[i].shape.emplace_back(x, y);
+                    }
 
-//                for (auto& point1 : intersections[i].shape) {
-//                    for (auto& point2 : intersections[i].shape) {
-//                        double new_width = sqrt((point1.x - point2.x) * (point1.x - point2.x)  + (point1.y - point2.y) * (point1.y - point2.y));
-//                        if (new_width > intersections[i].width) {
-//                            intersections[i].width = new_width;
-//                        }
-//                        std::cout << intersections[i].width << std::endl;
-//                    }
-//                }
+    //                for (auto& point1 : intersections[i].shape) {
+    //                    for (auto& point2 : intersections[i].shape) {
+    //                        double new_width = sqrt((point1.x - point2.x) * (point1.x - point2.x)  + (point1.y - point2.y) * (point1.y - point2.y));
+    //                        if (new_width > intersections[i].width) {
+    //                            intersections[i].width = new_width;
+    //                        }
+    //                        std::cout << intersections[i].width << std::endl;
+    //                    }
+    //                }
+                }
                 //  read width
                 intersections[i].width = getJsonMember<double>("width", curInterValue);
 
