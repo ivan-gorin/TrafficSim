@@ -43,6 +43,7 @@ void Widget::simStep()
 {
 //    std::cout << stepCount << std::endl;
     if (doStep) {
+//        std::cout << eng->getVehicleCount() << std::endl;
         eng->nextStep();
         ++stepCount;
     }
@@ -96,5 +97,6 @@ void Widget::on_pauseButton_clicked()
 void Widget::on_setWeatherButton_clicked()
 {
     eng->ChangeWeather(ui->chooseWeatherBox->currentText().toStdString());
+    eng->ChangeWeatherIntensity(ui->chooseIntensityBox->value());
     ui->weatherLabel->setText("Weather:\n" + ui->chooseWeatherBox->currentText());
 }
