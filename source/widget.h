@@ -6,6 +6,7 @@
 #include <QWidget>
 #include <string>
 #include <QWheelEvent>
+#include <QElapsedTimer>
 
 //QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }

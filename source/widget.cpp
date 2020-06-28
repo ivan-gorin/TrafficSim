@@ -4,6 +4,7 @@
 #include "wheeleventfilter.h"
 
 #include <QTimer>
+#include <QOpenGLWidget>
 #include <iostream>
 
 #include <vector>
@@ -17,9 +18,14 @@ Widget::Widget(QWidget *parent)
     ui->graphicsView->setDragMode(QGraphicsView::ScrollHandDrag);
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    QOpenGLWidget *gl = new QOpenGLWidget();
+    QSurfaceFormat format;
+    format.setSamples(4);
+    gl->setFormat(format);
+    ui->graphicsView->setViewport(gl);
     wheelEventFilter* filter = new wheelEventFilter;
     ui->graphicsView->viewport()->installEventFilter(filter);
-    eng = new CityFlow::Engine("config.json", 1, ui->graphicsView);
+    eng = new CityFlow::Engine("config.json", 4, ui->graphicsView);
     QString wLabel = "Weather:\n";
     wLabel.append(eng->getWeather().c_str());
     ui->weatherLabel->setText(wLabel);
@@ -29,7 +35,6 @@ Widget::Widget(QWidget *parent)
     connect(avgTimer, &QTimer::timeout, this, &Widget::avgPrint);
     stepCount = 0;
     simTimer->start(16);
-//    avgTimer->start(10000);
 }
 
 Widget::~Widget()
@@ -41,9 +46,7 @@ Widget::~Widget()
 
 void Widget::simStep()
 {
-//    std::cout << stepCount << std::endl;
     if (doStep) {
-//        std::cout << eng->getVehicleCount() << std::endl;
         eng->nextStep();
         ++stepCount;
     }
